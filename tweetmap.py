@@ -22,7 +22,7 @@ def get_tweets(search):
     api = get_twitter_api()
     location_data = []
 
-    for tweet in tweepy.Cursor(api.search_tweets, q=search).items(500):
+    for tweet in tweepy.Cursor(api.search_tweets, q=search).items(150):
         if hasattr(tweet, 'user') and hasattr(tweet.user, 'screen_name') and hasattr(tweet.user, 'location'):
             if tweet.user.location:
                 location_data.append((tweet.user.screen_name, tweet.user.location))
