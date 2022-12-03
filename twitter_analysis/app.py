@@ -25,7 +25,7 @@ def get_tweets(query):
 def get_all_tweets(query):
     next_results = ''
     TWITTER_API_1 = config('TWITTER_API_1')
-    query_params = "?q="+query+"&country_code=US&result_type=recent&count=100"
+    query_params = "?q="+query+"&country_code=US&result_type=recent&count=100&language=en"
     headers = {'Authorization': config('API_TOKEN')}
     with open('./folder_1/tweet_data.csv', 'a', encoding='UTF8') as f:
         writer = csv.writer(f)
@@ -33,7 +33,7 @@ def get_all_tweets(query):
         for j in range(100):
             api_url = TWITTER_API_1 + query_params
             if next_results!='':
-                api_url = TWITTER_API_1 + next_results
+                api_url = TWITTER_API_1 + next_results +'&language=en'
             tweets = requests.get(api_url,headers=headers).json()
             next_results = tweets['search_metadata']['next_results']
             for i in tweets['statuses']:
