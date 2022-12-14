@@ -6,6 +6,8 @@ RUN pip install apscheduler
 
 RUN pip install flask
 
+RUN pip install pymongo
+
 RUN pip install python-decouple
 
 WORKDIR /app
