@@ -20,3 +20,5 @@ Once we login to the MongoDB account, we can go to our cluster and select the co
 
 This is the workflow of the application 
 <img width="1323" alt="Screenshot 2022-12-20 at 3 42 39 PM" src="https://user-images.githubusercontent.com/32195607/211015002-8a36e31f-e0f5-41d5-b192-73feca3271d8.png">
+
+# TweetMind
