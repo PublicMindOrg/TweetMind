@@ -1,10 +1,11 @@
 import csv
+from decouple import config
 from pymongo import MongoClient
-cluster = MongoClient('mongodb+srv://mehtaadi-1:Aditya3003@cluster0.ajx7zka.mongodb.net/?retryWrites=true&w=majority')
+cluster = MongoClient(config('MONGO_URL'))
 db = cluster['TweetMind']
 collection = db['tweets_data']
 tweets = list(collection.find({}))
-with open('./folder_1/mongo_tweets.csv', 'a', encoding='UTF8') as f:
+with open('mongo_tweets.csv', 'a', encoding='UTF8') as f:
     writer = csv.writer(f)
     count=0
     for i in tweets:
