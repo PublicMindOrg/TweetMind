@@ -1,3 +1,7 @@
-tweepy
-apscheduler
 flask
+python-decouple
+pymongo
+requests
+datetime
+pandas
+numpy

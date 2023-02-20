@@ -1,0 +1,618 @@
+[
+    {
+        "topic": "Layoffs",
+        "query": "layoffs"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "layoff unemployment"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "lay off workers"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "lay off employees"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "lay off workforce"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "lay off work force"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "lay off unemployed"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "laid off workers"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "laid off employees"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "laid off work force"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "unemployment"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "jobless"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech layoffs"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech laid off"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech firings"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech unemployment"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech unemployed"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech jobless"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech layoffs"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech laid off"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech firings"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech unemployment"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech unemployed"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "tech jobless"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "technology layoffs"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "technology laid off"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "technology firings"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "technology unemployment"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "technology unemployed"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "technology jobless"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "Silicon Valley layoffs"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "Silicon Valley laid off"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "Silicon Valley firings"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "Silicon Valley unemployment"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "Silicon Valley unemployed"
+    },
+    {
+        "topic": "Layoffs",
+        "query": "Silicon Valley jobless"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun violence"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "mass shooting"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "guns mass killing"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "guns mass murder"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "guns massacre"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun control"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "second amendment death"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "second amendment killing"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "second amendment murder"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "second amendment shooting"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun control death"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun control killing"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun control murder"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun control shooting"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "guns Sandy Hook"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "guns Parkland"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "guns Uvalde"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "mass shooting LA"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "mass shooting Los Angeles"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "mass shooting Monterey Park"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "mass shooting Alhambra"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun violence LA"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun violence Los Angeles"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun violence Monterey Park"
+    },
+    {
+        "topic": "Gun Violence",
+        "query": "gun violence Alhambra"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college workers organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college workers union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education workers strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education workers labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education workers organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education workers union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic employees strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic employees labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic employees organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic employees union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university employees strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university employees labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university employees organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university employees union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college employees strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college employees labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college employees organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college employees union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education employees strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education employees labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education employees organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "higher education employees union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student workers strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student workers labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student workers organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student workers union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student employees strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student employees labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student employees organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "student employees union"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate change"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate crisis"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate emergency"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate action"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "global warming"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "anthropogenic warming"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "fossil fuels"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon footprint"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon neutral"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon sink"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon release"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon capture"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon credit"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon climate"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "carbon tax"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "extreme weather"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "methane"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "green energy"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "green growth"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "green jobs"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "greenhouse gas"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "greenhouse gasses"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "greenhouse effect"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "degrowth,sustainable climate"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "sustainability climate"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "sea level rise"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "net zero"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "destination zero"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate denial"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate denialism"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate change denial"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate denier"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate change denier"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate skeptic"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate change skeptic"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate scam"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate cult"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "climate misinformation"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "free market"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "CO2 climate "
+    },
+    {
+        "topic": "Climate Change",
+        "query": "renewable energy"
+    },
+    {
+        "topic": "Climate Change",
+        "query": "renewables"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Russia Ukraine war"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Russo-Ukrainian war"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Russian Ukrainian war"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Ukraine war"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Ukrainian war"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Putin Ukraine"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Putin Ukrainian"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Zelensky Russia"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Zelenskiy Russia"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Zelensky war"
+    },
+    {
+        "topic": "Russia Ukraine War",
+        "query": "Zelenskiy war"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic workers strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic workers labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic workers organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "academic workers union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university workers strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university workers labor"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university workers organize"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "university workers union"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college workers strike"
+    },
+    {
+        "topic": "Academic Workers Strike",
+        "query": "college workers labor"
+    }
+]

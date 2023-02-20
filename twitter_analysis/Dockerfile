@@ -1,16 +1,16 @@
+# syntax=docker/dockerfile:1
+
 FROM python:3.9.12
 
-RUN pip install tweepy
+WORKDIR /twitter_analysis
 
-RUN pip install apscheduler
+COPY requirements.txt requirements.txt
 
-RUN pip install flask
+RUN python3 -m pip install -r requirements.txt
 
-RUN pip install pymongo
+RUN python3 -m pip install -U xgboost
 
-RUN pip install python-decouple
-
-WORKDIR /app
+RUN python3 -m pip install scikit-learn
 
 COPY . .
 
