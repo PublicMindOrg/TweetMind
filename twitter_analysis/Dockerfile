@@ -2,7 +2,7 @@
 
 FROM python:3.9.12
 
-WORKDIR /twitter_analysis
+WORKDIR /app
 
 COPY requirements.txt requirements.txt
 

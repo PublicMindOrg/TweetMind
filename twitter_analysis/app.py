@@ -124,7 +124,8 @@ class TweetCollection:
         file.close()
         print((cleant_arr[0]))
         collection.drop()
-        collection.insert_one(i)
+        for i in cleant_arr:
+            collection.insert_one(i)
 
 @app.route('/')
 def index():
@@ -151,7 +152,7 @@ def convertData():
     for i in topics:
         headers = ['Id','Tweet','Language','Created At','Topic','Query']
         tweets = list(collection.find({'topic':i}))
-        f = open(i+'.csv', 'a')
+        f = open('./folder_1/'+i+'.csv', 'w+')
         writer = csv.writer(f)
         # write a row to the csv file
         writer.writerow(headers)

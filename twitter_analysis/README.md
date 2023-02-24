@@ -4,7 +4,7 @@ TweetMind is a project that analyzes public issues and gives a biased public ove
 ## How to run the application?
 
   1. Build docker image by running the following command within the docker file directory. docker build --tag python-docker .
-  2. Run this command to run the docker image: docker run -p 5000:5000 -t -i python-docker:latest
+  2. Run this command to run the docker image: docker run -p 5000:5000 -t -i -v "$(pwd)/folder_1:/app/folder_1" python-docker:latest
   3. Open the browser http://127.0.0.1:5000 to get the Main UI page
 
 ## End Points
