@@ -8,10 +8,6 @@ COPY requirements.txt requirements.txt
 
 RUN python3 -m pip install -r requirements.txt
 
-RUN python3 -m pip install -U xgboost
-
-RUN python3 -m pip install scikit-learn
-
 COPY . .
 
 EXPOSE 3000

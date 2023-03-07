@@ -1,7 +1,9 @@
-flask
-python-decouple
-pymongo
+flask==2.1.2
+python-decouple==3.6
+pymongo==4.3.3
 requests
 datetime
-pandas
+pandas==1.4.2
 numpy
+xgboost==1.5.1
+scikit-learn==1.1.2
