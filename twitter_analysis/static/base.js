@@ -156,22 +156,47 @@ $(document).ready(function () {
         $("#analysis").append(
           '<canvas id="myChart" style="width:100%;max-width:700px"></canvas>'
         );
-        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        var yValues = [55, 49, 44, 24, 15];
-        var barColors = ["red", "green", "blue", "orange", "brown"];
-
+        
+        var data = {
+          labels: ['2023-02-20', '2023-02-21', '2023-02-22', '2023-02-23', '2023-02-24', '2023-02-25', '2023-02-26', '2023-02-27', '2023-02-28', '2023-03-01'],
+          datasets: [
+            {
+              label: 'Negative',
+              data: [2.0, 8.0, 2.0, 2.0, 8.0, 2.0, 5.0, 6.0, 12.0, 10.0, 4.0, 7.0, 4.0, 3.0, 7.0, 15.0, 7.0],
+              backgroundColor: '#9BD0F5',
+              stack: 'Stack 0',
+            },
+            {
+              label: 'Neutral',
+              data: [2.0, 4.0, 5.0, 2.0, 10.0, 10.0, 4.0, 9.0, 11.0, 14.0, 10.0, 11.0, 4.0, 3.0, 7.0, 8.0, 9.0],
+              backgroundColor: '#FFB1C1',
+              stack: 'Stack 1',
+            },
+            {
+              label: 'Positive',
+              data: [0.0, 3.0, 6.0, 0.0, 4.0, 4.0, 1.0, 3.0, 7.0, 5.0, 2.0, 3.0, 0.0, 2.0, 3.0, 3.0, 1.0],
+              backgroundColor: '#4BC0C0',
+              stack: 'Stack 2',
+            },
+          ]
+        }
         new Chart("myChart", {
           type: "bar",
-          data: {
-            labels: xValues,
-            datasets: [
-              {
-                backgroundColor: barColors,
-                data: yValues,
-              },
-            ],
-          },
+          data: data,
           options: {
+            plugins: {
+              title: {
+                display: true,
+                text: 'Chart.js Bar Chart - Stacked'
+              },
+            },
+            responsive: true,
+            scales: {
+              
+              y: {
+                stacked: true
+              }
+            },
             legend: { display: false },
             title: {
               display: true,
