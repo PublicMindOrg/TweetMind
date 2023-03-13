@@ -1,16 +1,12 @@
+# syntax=docker/dockerfile:1
+
 FROM python:3.9.12
 
-RUN pip install tweepy
-
-RUN pip install apscheduler
-
-RUN pip install flask
-
-RUN pip install pymongo
-
-RUN pip install python-decouple
-
 WORKDIR /app
+
+COPY requirements.txt requirements.txt
+
+RUN python3 -m pip install -r requirements.txt
 
 COPY . .
 
