@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template
 import csv
 import os 
 app = Flask(__name__)
@@ -6,28 +6,39 @@ import warnings
 warnings.filterwarnings("ignore")
 from tweet_class import TweetCollection
 
-
+# This is the main route of the application
+# Using this, we land on the main UI
 @app.route('/')
 def index():
     return render_template('base.html')
 
+# This is endpoint is used for the tweet fetching pipeline
 @app.route('/getTweets')
 def getTweets():
     twitobj = TweetCollection()
     twitobj.get_tweets()
     return 'Hi'
 
+# This is used for deduplication of the data
 @app.route('/cleanTweets')
 def cleanTweets():
     twitobj = TweetCollection()
     twitobj.clean_data()
     return 'Cleaning Done'
 
+@app.route('/getChartData')
+def getChartData():
+    twitobj = TweetCollection()
+    graph_data = twitobj.get_topic_data()
+    return jsonify(graph_data)
+
+
+# This endpoint is used for converting data from MongoDB into csv files
 @app.route('/convertData')
 def convertData():
     twitobj = TweetCollection()
     try: 
-        collection = twitobj.get_db_connection()
+        collection = twitobj.get_db_connection('tweets_data')
         topics = ['Academic Workers Strike','Climate Change','Russia Ukraine War','Layoffs','Gun Violence']
         for topic in topics:
             headers = ['Id','Tweet','Language','Created At','Topic','Query']
