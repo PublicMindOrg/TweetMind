@@ -41,22 +41,23 @@ def convertData():
         collection = twitobj.get_db_connection('tweets_data')
         topics = ['Academic Workers Strike','Climate Change','Russia Ukraine War','Layoffs','Gun Violence']
         for topic in topics:
-            headers = ['Id','Tweet','Language','Created At','Topic','Query']
-            tweets = list(collection.find({'topic':topic}))
+            headers = ['Id','Tweet','Language','Created At','Topic','Query','Retweet Count','Tweet Id']
+            tweets = collection.find({"retweet_count": { "$ne": None },"tweet_id": { "$ne": None },"topic":topic})
             try:
-                topic_file = open('./folder_1/'+topic+'.csv', 'w+')
+                topic_file = open(topic+'.csv', 'w+')
                 writer = csv.writer(topic_file)
                 # write a row to the csv file
                 writer.writerow(headers)
                 for tweet in tweets:
-                    writer.writerow([tweet['_id'],tweet['tweet'],tweet['language'],tweet['created_at'],tweet['topic'],tweet['query']])
+                    print("{}".format(tweet['tweet_id']))
+                    writer.writerow([tweet['_id'],tweet['tweet'],tweet['language'],tweet['created_at'],tweet['topic'],tweet['query'],tweet['retweet_count'],"{}".format(tweet['tweet_id'])])
                 topic_file.close()
             except FileNotFoundError as e:
                 print("File not found: ",e)
                 return
         return 'Converted'
     except Exception as e:
-        print("Exception occured: ",e)
+        return ("Exception occured: ",e)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8000))

@@ -33,37 +33,91 @@ class TweetCollection:
     
     def get_topic_data(self):
         graph_data = {}
-        collection = self.get_db_connection('results_data')
-        topic_list = ['Academic Workers Strike','Climate Change','Russia Ukraine War','Layoffs','Gun Violence']
+        # collection = self.get_db_connection('results_data')
+        #,'Climate Change','Russia Ukraine War'
+        topic_list = ['Academic Workers Strike','Layoffs','Gun Violence']
         for topic in topic_list:
-            tweets = list(collection.find({'Topic':topic}))
-            list_collection = list(tweets)
-            df = pd.DataFrame(list_collection)
-            df['Created At'] = df['Created At'].apply(self.convert_date)
+            results_collection = self.get_db_connection('results_new')
+            list_obj = results_collection.find({"Topic":topic})
+            df = pd.DataFrame(list_obj)
+            summary_df = pd.read_excel(topic+'.xlsx')
+            
+
             grouped = df.groupby(by='Created At')['predicted'].value_counts()
             unstacked = grouped.unstack(level=1)
-
+            tweet_grouped = df[df['Retweet Count']>0]
             udict = unstacked.to_dict('index')
             x_list = []
             y_list = []
+            tweet_list = []
+            summary_list = []
             for key, val in udict.items():
                 x_list.append(key)
+                summary_val = summary_df[summary_df['Date']==key]['Summary'].to_list()
+                if len(summary_val):
+                    summary_list.append(summary_val[0])
+                else:
+                    summary_list.append("No Summary")
+                filtered_df = tweet_grouped[tweet_grouped['Created At']==key]
+                filtered_df = filtered_df.sort_values(by=['Retweet Count'], ascending=False)
+                filtered_pos = filtered_df[filtered_df['predicted']=='Positive']
+                filtered_neg = filtered_df[filtered_df['predicted']=='Negative']
+                filtered_neu = filtered_df[filtered_df['predicted']=='Neutral']
+                
+                top_list = []
+                for i in range(min(1,filtered_neg.shape[0])):
+                    top_list.append(str(filtered_neg.iloc[i]['Tweet Id']))
+                for i in range(min(1,filtered_pos.shape[0])):
+                    top_list.append(str(filtered_pos.iloc[i]['Tweet Id']))
+                for i in range(min(1,filtered_neu.shape[0])):
+                    top_list.append(str(filtered_neu.iloc[i]['Tweet Id']))
+                tweet_list.append([top_list])
                 v1 = [v for v in val.values()]
                 y_list.append(v1)
 
             neg_list = [0 if math.isnan(x[0]) else x[0] for x in y_list]
             neu_list = [0 if math.isnan(x[1]) else x[1] for x in y_list]
             pos_list = [0 if math.isnan(x[2]) else x[2] for x in y_list]
-            
+
             graph_data[topic] = {
-    
+
                 'X_data':x_list,
                 'Y_data':{
-                  'Negative':neg_list,
-                  'Positive':pos_list,
-                  'Neutral':neu_list
-                  }
+                    'Negative':neg_list,
+                    'Positive':pos_list,
+                    'Neutral':neu_list
+                    },
+                'Top Tweets':tweet_list,
+                'Summary':summary_list
             }
+            # tweets = list(collection.find({'Topic':topic}))
+            # list_collection = list(tweets)
+            # df = pd.DataFrame(list_collection)
+            # df['Created At'] = df['Created At'].apply(self.convert_date)
+            # grouped = df.groupby(by='Created At')['predicted'].value_counts()
+            # unstacked = grouped.unstack(level=1)
+
+            # udict = unstacked.to_dict('index')
+            # x_list = []
+            # y_list = []
+            # for key, val in udict.items():
+            #     x_list.append(key)
+            #     v1 = [v for v in val.values()]
+            #     y_list.append(v1)
+
+            # neg_list = [0 if math.isnan(x[0]) else x[0] for x in y_list]
+            # neu_list = [0 if math.isnan(x[1]) else x[1] for x in y_list]
+            # pos_list = [0 if math.isnan(x[2]) else x[2] for x in y_list]
+            
+            # graph_data[topic] = {
+    
+            #     'X_data':x_list,
+            #     'Y_data':{
+            #       'Negative':neg_list,
+            #       'Positive':pos_list,
+            #       'Neutral':neu_list
+            #       }
+            # }
         return graph_data
 
     def get_db_connection(self,collection_name):
@@ -121,7 +175,7 @@ class TweetCollection:
                     query_params = q_obj['next_results']
                 headers = {'Authorization': config('API_TOKEN')}
                 api_url = TWITTER_API_1 + query_params
-                collection = self.get_db_connection('tweets_data')
+                tweet_collection = self.get_db_connection('tweets_data')
                 tweets = requests.get(api_url,headers=headers).json()
                 if tweets['search_metadata'] and 'next_results' in tweets['search_metadata'].keys():
                     param = tweets['search_metadata']['next_results']
@@ -129,32 +183,43 @@ class TweetCollection:
                 self.query_list.append(q_obj)
                 count = 0
                 for tweet in tweets['statuses']:
-                    count+=1
+                    
                     user_data= tweet['user']
                     user_features = self.get_user_features(user_data)
                     # features for model
+                    
                     features = ['verified', 'hour_created', 'geo_enabled', 'default_profile', 'default_profile_image',
-                                'favourites_count', 'followers_count', 'friends_count', 'statuses_count', 'average_tweets_per_day',
-                                'network', 'tweet_to_followers', 'follower_acq_rate', 'friends_acq_rate']
-
+                            'favourites_count', 'followers_count', 'friends_count', 'statuses_count', 'average_tweets_per_day',
+                            'network', 'tweet_to_followers', 'follower_acq_rate', 'friends_acq_rate']
                     # creates df for model.predict() format
                     user_df = pd.DataFrame(np.matrix(user_features), columns=features)
                     try:
                         xgb_model = self.load_bot_model('model_file_name.json')
                         prediction = xgb_model.predict(user_df)[0]
-                        bot_file = open('./folder_1/bot_data.csv', 'a')
-                        writer = csv.writer(bot_file)
-                        user_features.append(prediction)
-                        # write a row to the csv file
-                        writer.writerow(user_features)
-
-                        # close the file
-                        bot_file.close()
+                        prediction_collection = self.get_db_connection('prediction_data')
+                        prediction_object = {'tweet_id':user_data['id'],
+                                    'verified':user_features[0], 
+                                    'hour_created':user_features[1], 
+                                    'geo_enabled':user_features[2], 
+                                    'default_profile':user_features[3], 
+                                    'default_profile_image':user_features[4],
+                                    'favourites_count':user_features[5],
+                                    'followers_count':user_features[6], 
+                                    'friends_count':user_features[7], 
+                                    'statuses_count':user_features[8], 
+                                    'average_tweets_per_day':user_features[9],
+                                    'network':user_features[10], 
+                                    'tweet_to_followers':user_features[11], 
+                                    'follower_acq_rate':user_features[12], 
+                                    'friends_acq_rate':user_features[13],
+                                    'prediction':int(str(prediction))}
+                        prediction_collection.insert_one(prediction_object)
                     except FileNotFoundError as e:
                         print("File not found: ",e)
                     if prediction==0:
                         print('Added')
-                        collection.insert_one({'tweet':tweet['full_text'],'language':tweet['lang'],'created_at':str(datetime.strptime(tweet['created_at'],'%a %b %d %X %z %Y').replace(tzinfo=None).date()),'topic':q_obj['topic'],'query':q_obj['query']})
+                        count+=1
+                        tweet_collection.insert_one({'tweet_id':tweet['id_str'],'retweet_count':tweet['retweet_count'],'tweet':tweet['full_text'],'language':tweet['lang'],'created_at':str(datetime.strptime(tweet['created_at'],'%a %b %d %X %z %Y').replace(tzinfo=None).date()),'topic':q_obj['topic'],'query':q_obj['query']})
                     
                 print('Number of tweets: '+str(count))
         except Exception as e:
