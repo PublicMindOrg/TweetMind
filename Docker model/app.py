@@ -12,6 +12,7 @@ from transformers import AutoTokenizer, AutoConfig
 from flask import Flask
 import torch
 from pymongo import MongoClient
+from decouple import config
 import pandas as pd 
 import sys
 
@@ -47,10 +48,11 @@ def label_tweet(enc_tweet):
   lbl = labels[map_idx]
   return lbl
 
-def insertToMongo(reader):
-    cluster = MongoClient('mongodb+srv://publicmind3:publicmind2@cluster0.dr4qqbc.mongodb.net/?retryWrites=true&w=majority')
+def insertToMongo(df):
+    cluster = MongoClient(config('MONGO_URL'))
     db = cluster['TweetMind']
     collection = db['results_new']
+    reader = df
     mongo_docs = []
 
     for tweet in reader:
