@@ -10,6 +10,8 @@ RUN pip install transformers
 
 RUN pip install flask
 
+RUN pip install pymongo
+
 WORKDIR /app
 
 COPY . .

@@ -10,6 +10,10 @@ from transformers import AutoModelForSequenceClassification
 from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer, AutoConfig
 from flask import Flask
+import torch
+from pymongo import MongoClient
+import pandas as pd 
+import sys
 
 app = Flask(__name__)
 
@@ -37,39 +41,56 @@ def data_cleaning(line):
 def label_tweet(enc_tweet):
   enc = enc_tweet
   output = model(**enc)
-  scores = output[0][0].detach().numpy()
+  scores = output[0][0].cpu().detach().numpy()
   scores = softmax(scores)
   map_idx = scores.argmax(axis=0)
   lbl = labels[map_idx]
   return lbl
 
+def insertToMongo(reader):
+    cluster = MongoClient('mongodb+srv://publicmind3:publicmind2@cluster0.dr4qqbc.mongodb.net/?retryWrites=true&w=majority')
+    db = cluster['TweetMind']
+    collection = db['results_new']
+    mongo_docs = []
+
+    for tweet in reader:
+        mongo_docs.append(tweet)
+    collection.insert_many(mongo_docs)
+
 @app.route("/")
 def inference():
     global labels, model
-    print("hi")
 
-    with open('./data/covid.csv') as f:
+    with open('./data/Climate Change.csv') as f:
 
         fpath = './data/'
         output_path = os.path.join(fpath, 'output.csv')
-        # print(output_path, "\n")
+        print(output_path, "\n")
 
-        data_test = pd.read_csv(f, header=None, encoding='latin-1')
+        data_test = pd.read_csv(f, encoding='latin-1')
+        print(data_test.head())
 
-        data_test.drop_duplicates(subset=[0], inplace=True)
+
+        data_test.drop_duplicates(subset=['Tweet'], inplace=True)
         data_test.reset_index(drop=True, inplace=True)
         # print("dropped duplicates")
 
-        data_test['clean_text'] = data_test[0].apply(lambda func: data_cleaning(func))
+        data_test['clean_text'] = data_test['Tweet'].apply(lambda func: data_cleaning(func))
         # print("data cleaning done\n")
 
         model = AutoModelForSequenceClassification.from_pretrained('./roberta-model/')
         tokenizer = AutoTokenizer.from_pretrained('./roberta-tokenizer/')
-
         labels = [-1, 0, 1]
+
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        model.to(device)
 
         data_test['encoded_tweet'] = data_test['clean_text'].apply(lambda func: tokenizer(func, return_tensors='pt'))
         # print("data encoding done\n")
+
+        for k,v in data_test['encoded_tweet'].items():
+            data_test['encoded_tweet'][k] = v.to(device)
+        # print("encoding to gpu done")
 
         data_test['predicted'] = ''
 
@@ -77,10 +98,9 @@ def inference():
         # print("data labelling done\n")
 
         # print("\n", output_path, "\n")
-        df = data_test[[0, 'predicted']]
-        # print(df.head())
-        df.to_csv(output_path)
-        # print("converted to csv")
+        df = data_test[['Tweet', 'Created At', 'Topic', 'Retweet Count', 'Tweet Id', 'predicted']]
+
+        insertToMongo(df)
 
     return 'Done'
 
